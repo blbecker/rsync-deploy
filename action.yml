@@ -1,0 +1,33 @@
+name:               "Rsync and Deploy"
+author:             Benjamin Becker
+description:        "RSync build artifacts to a remote host with a supplied SSH private key"
+branding:
+  icon:             arrow-right
+  color:            purple
+
+inputs:
+  destination_host:
+    description:    "The hostname of the host to rsync to"
+    required:       true
+  destination_path:
+    description:    "The directory on the remote host to rsync to"
+    required:       true
+  deployment_key:
+    description:    "Base64 encoded SSH Private key to use for deployment"
+    required:       true
+  deployment_user:
+    description:    "The user with which to rsync the website to destination"
+    required:       true
+  source_dir:
+    description:    "The local directory to deploy to the remote host"
+    required:       true
+
+runs:
+  using:            'docker'
+  image:            'docker://blbecker/rsync-deploy:latest'
+  args:
+    - ${{ inputs.deployment_user }}
+    - ${{ inputs.destination_host }}
+    - ${{ inputs.destination_path }}
+    - ${{ inputs.deployment_key }}
+    - ${{ inputs.source_dir }}
