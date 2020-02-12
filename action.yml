@@ -24,7 +24,7 @@ inputs:
 
 runs:
   using:            'docker'
-  image:            'docker://blbecker/rsync-deploy-action:latest'
+  image:            'docker://blbecker/rsync-deploy-action:1.0'
   args:
     - ${{ inputs.deployment_user }}
     - ${{ inputs.destination_host }}
