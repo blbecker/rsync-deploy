@@ -2,7 +2,7 @@ FROM alpine:latest
 
 LABEL "com.github.actions.name"="Rsync Deploy"
 
-LABEL maintainer="benjamin@bckr.me"
+LABEL org.opencontainers.image.authors=="github@mail.bckr.me"
 
 RUN apk add --no-cache git rsync bash openssh
 
